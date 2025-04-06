@@ -1,9 +1,8 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta http-equiv="Content-Language" content="en">
     <meta name="apple-mobile-web-app-capable" content="no"/>
     <meta name="apple-touch-fullscreen" content="yes"/>
     <meta name="format-detection" content="telephone=no,email=no"/>
@@ -15,7 +14,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>newbee-mall 支付</title>
+    <title>newbee-mall Payment</title>
     <link th:href="@{/mall/styles/pay.css}" rel="stylesheet" media="screen">
     <script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
 </head>
@@ -29,7 +28,7 @@
     <div class="mod-ct">
         <div class="order">
         </div>
-        <div class="amount" id="money">￥
+        <div class="amount" id="money">¥
             <th:block th:text="${totalPrice+'.00'}"></th:block>
         </div>
         <div class="qrcode-img-wrapper" data-role="qrPayImgWrapper">
@@ -38,7 +37,7 @@
                 <div style="position: relative;display: inline-block;">
                     <img width="300" height="300"
                          th:src="@{/mall/image/pay/alipay_qrcode.png}"
-                         title="请尽快支付~"
+                         title="Please complete the payment promptly~"
                          style="display: block;">
                 </div>
             </div>
@@ -46,10 +45,10 @@
 
         <div class="time-item" style="padding-top: 10px">
             <div class="time-item" id="msg">
-                <h1>支付完成后，将跳转至订单详情</h1>
+                <h1>After payment, you will be redirected to the order details</h1>
             </div>
             <div class="time-item">
-                <h1>订单:
+                <h1>Order:
                     <th:block th:text="${orderNo}"></th:block>
                 </h1>
             </div>
@@ -59,11 +58,11 @@
         <div class="tip">
             <div class="ico-scan-ali"></div>
             <div class="tip-text">
-                <p id="showtext">打开支付宝 [扫一扫]</p>
+                <p id="showtext">Open Alipay and [Scan]</p>
             </div>
             <div class="tip-text">
                 <a onclick="payOrderSuccess()"
-                   class="btn btn-small btn-success" title="支付成功">支付成功</a>
+                   class="btn btn-small btn-success" title="Payment Success">Payment Successful</a>
             </div>
         </div>
 
@@ -88,7 +87,7 @@
                 }
             },
             error: function () {
-                alert("操作失败");
+                alert("Operation failed");
             }
         });
     }

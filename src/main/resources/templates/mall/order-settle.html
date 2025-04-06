@@ -1,7 +1,6 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="mall/header::head-fragment('NewBee商城-订单结算','order-detail')">
+<head th:replace="mall/header::head-fragment('NewBee Mall - Order Checkout','order-detail')">
 </head>
 <link th:href="@{/mall/css/bootstrap-modal.css}" rel="stylesheet">
 <body>
@@ -20,10 +19,10 @@
             <div class="uc-box uc-main-box">
                 <div class="uc-content-box order-view-box">
                     <div class="box-hd">
-                        <h1 class="title">填写并核对订单信息</h1>
+                        <h1 class="title">Fill and Verify Order Information</h1>
                         <div class="more clearfix">
                             <div class="actions">
-                                <a id="saveOrder" class="btn btn-small btn-primary" title="提交订单">提交订单</a>
+                                <a id="saveOrder" class="btn btn-small btn-primary" title="Submit Order">Submit Order</a>
                             </div>
                         </div>
                     </div>
@@ -35,23 +34,23 @@
                                     <div class="order-progress">
                                         <ol class="progress-list clearfix progress-list-5">
                                             <li class="step step-done">
-                                                <div class="progress"><span class="text">购物车</span></div>
+                                                <div class="progress"><span class="text">Shopping Cart</span></div>
                                                 <div class="info"></div>
                                             </li>
                                             <li class="step step-active">
-                                                <div class="progress"><span class="text">下单</span></div>
+                                                <div class="progress"><span class="text">Place Order</span></div>
                                                 <div class="info"></div>
                                             </li>
                                             <li class="step">
-                                                <div class="progress"><span class="text">付款</span></div>
+                                                <div class="progress"><span class="text">Payment</span></div>
                                                 <div class="info"></div>
                                             </li>
                                             <li class="step">
-                                                <div class="progress"><span class="text">出库</span></div>
+                                                <div class="progress"><span class="text">Shipped</span></div>
                                                 <div class="info"></div>
                                             </li>
                                             <li class="step">
-                                                <div class="progress"><span class="text">交易成功</span></div>
+                                                <div class="progress"><span class="text">Transaction Successful</span></div>
                                                 <div class="info"></div>
                                             </li>
                                         </ol>
@@ -78,7 +77,7 @@
                                             </td>
                                             <td class="col col-price"><p class="price"
                                                                          th:text="${item.sellingPrice+'元 x '+item.goodsCount}">
-                                                1299元 × 1</p></td>
+                                                1299 yuan × 1</p></td>
                                             <td class="col col-actions">
                                             </td>
                                         </tr>
@@ -87,13 +86,13 @@
                                 </table>
                             </div>
                             <div id="editAddr" class="order-detail-info">
-                                <h3>收货信息</h3>
+                                <h3>Shipping Information</h3>
                                 <table class="info-table">
                                     <tbody>
                                     <tr>
-                                        <th>收货地址：</th>
+                                        <th>Shipping Address:</th>
                                         <td class="user_address_label"
-                                            th:text="${session.newBeeMallUser.address==''?'无':session.newBeeMallUser.address}">
+                                            th:text="${session.newBeeMallUser.address==''?'None':session.newBeeMallUser.address}">
                                             newbee
                                         </td>
                                     </tr>
@@ -101,16 +100,16 @@
                                 </table>
                                 <div class="actions">
                                     <a class="btn btn-small btn-line-gray J_editAddr"
-                                       href="javascript:openUpdateModal();">修改</a>
+                                       href="javascript:openUpdateModal();">Edit</a>
                                 </div>
                             </div>
                             <div id="editTime" class="order-detail-info">
-                                <h3>支付方式</h3>
+                                <h3>Payment Method</h3>
                                 <table class="info-table">
                                     <tbody>
                                     <tr>
-                                        <th>支付方式：</th>
-                                        <td>在线支付</td>
+                                        <th>Payment Method:</th>
+                                        <td>Online Payment</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -121,16 +120,16 @@
                                 <table class="total-table">
                                     <tbody>
                                     <tr>
-                                        <th>商品总价：</th>
-                                        <td><span class="num" th:text="${priceTotal+'.00'}">1299.00</span>元</td>
+                                        <th>Total Price:</th>
+                                        <td><span class="num" th:text="${priceTotal+'.00'}">1299.00</span> yuan</td>
                                     </tr>
                                     <tr>
-                                        <th>运费：</th>
-                                        <td><span class="num">0</span>元</td>
+                                        <th>Shipping Fee:</th>
+                                        <td><span class="num">0</span> yuan</td>
                                     </tr>
                                     <tr>
-                                        <th class="total">应付金额：</th>
-                                        <td class="total"><span class="num" th:text="${priceTotal+'.00'}">1299.00</span>元
+                                        <th class="total">Amount Payable:</th>
+                                        <td class="total"><span class="num" th:text="${priceTotal+'.00'}">1299.00</span> yuan
                                         </td>
                                     </tr>
                                     </tbody>
@@ -148,22 +147,22 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <h6 class="modal-title" id="personalInfoModalLabel">地址修改</h6>
+                        <h6 class="modal-title" id="personalInfoModalLabel">Address Modification</h6>
                     </div>
                     <div class="modal-body">
                         <form id="personalInfoForm">
                             <div class="form-group">
                                 <input type="hidden" id="userId" th:value="${session.newBeeMallUser.userId}">
-                                <label for="address" class="control-label">收货地址:</label>
+                                <label for="address" class="control-label">Shipping Address:</label>
                                 <input type="text" class="form-control" id="address" name="address"
-                                       placeholder="请输入收货地址" th:value="${session.newBeeMallUser.address}"
+                                       placeholder="Please enter the shipping address" th:value="${session.newBeeMallUser.address}"
                                        required="true">
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" id="saveButton">确认</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="saveButton">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -171,7 +170,6 @@
         <div class="clear"></div>
     </div>
 </div>
-
 
 <div th:replace="mall/footer::footer-fragment"></div>
 
@@ -183,16 +181,16 @@
 <script type="text/javascript">
     $('#saveOrder').click(function () {
         var userAddress = $(".user_address_label").html();
-        if (userAddress == '' || userAddress == '无') {
+        if (userAddress == '' || userAddress == 'None') {
             Swal.fire({
-                text: "请填写收货信息",
+                text: "Please fill in the shipping information",
                 icon: "error",iconColor:"#f05b72",
             });
             return;
         }
         if (userAddress.trim().length < 10) {
             Swal.fire({
-                text: "请输入正确的收货信息",
+                text: "Please enter the correct shipping information",
                 icon: "error",iconColor:"#f05b72",
             });
             return;
@@ -204,7 +202,7 @@
         $('#personalInfoModal').modal('show');
     }
 
-    //绑定modal上的保存按钮
+    // Bind save button in the modal
     $('#saveButton').click(function () {
         var address = $("#address").val();
         var userId = $("#userId").val();
@@ -213,7 +211,7 @@
             "address": address
         };
         $.ajax({
-            type: 'POST',//方法类型
+            type: 'POST',//method type
             url: '/personal/updateInfo',
             contentType: 'application/json',
             data: JSON.stringify(data),
@@ -232,7 +230,7 @@
             },
             error: function () {
                 Swal.fire({
-                    text: '操作失败',
+                    text: 'Operation failed',
                     icon: "error",iconColor:"#f05b72",
                 });
             }

@@ -1,9 +1,9 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
+<!-- Copyright (c) 2019-2020 Shisan all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>NewBee商城-购物车</title>
+    <title>NewBee Mall - Shopping Cart</title>
     <link rel="stylesheet" th:href="@{mall/css/iconfont.css}">
     <link rel="stylesheet" th:href="@{mall/css/common.css}">
     <link rel="stylesheet" th:href="@{mall/styles/header.css}">
@@ -20,8 +20,8 @@
             </div>
         </a>
 
-        <div class="wdgwc fl ml20">购物车</div>
-        <div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
+        <div class="wdgwc fl ml20">Shopping Cart</div>
+        <div class="wxts fl ml20">Friendly Reminder: Whether the product is successfully purchased is subject to the final order. Please settle as soon as possible.</div>
         <div class="clear"></div>
     </div>
     <div class="cart_line"></div>
@@ -36,11 +36,11 @@
                 <div class="top2 center">
                     <div class="sub_top fl">
                     </div>
-                    <div class="sub_top fl">商品名称</div>
-                    <div class="sub_top fl">单价</div>
-                    <div class="sub_top fl">数量</div>
-                    <div class="sub_top fl">小计</div>
-                    <div class="sub_top fr">操作</div>
+                    <div class="sub_top fl">Product Name</div>
+                    <div class="sub_top fl">Price</div>
+                    <div class="sub_top fl">Quantity</div>
+                    <div class="sub_top fl">Subtotal</div>
+                    <div class="sub_top fr">Action</div>
                     <div class="clear"></div>
                 </div>
                 <th:block th:each="item : ${myShoppingCartItems}">
@@ -48,15 +48,15 @@
                         <div class="sub_content fl ">
                         </div>
                         <div class="sub_content cover fl"><img th:src="@{${item.goodsCoverImg}}"></div>
-                        <div class="sub_content fl ft20" th:text="${item.goodsName}">商品名称</div>
-                        <div class="sub_content fl" th:text="${item.sellingPrice+'元'}">1299元</div>
+                        <div class="sub_content fl ft20" th:text="${item.goodsName}">Product Name</div>
+                        <div class="sub_content fl" th:text="${item.sellingPrice+'¥'}">1299¥</div>
                         <div class="sub_content fl">
                             <input class="goods_count" th:id="${'goodsCount'+item.cartItemId}" type="number"
                                    th:onblur="'updateItem('+${item.cartItemId}+')'"
                                    th:value="${item.goodsCount}" step="1" min="1"
                                    max="5">
                         </div>
-                        <div class="sub_content fl" th:text="${item.goodsCount*item.sellingPrice+'元'}">1299元</div>
+                        <div class="sub_content fl" th:text="${item.goodsCount*item.sellingPrice+'¥'}">1299¥</div>
                         <div class="sub_content fl"><a href="##" th:onclick="'deleteItem('+${item.cartItemId}+')'">×</a>
                         </div>
                         <div class="clear"></div>
@@ -67,24 +67,24 @@
         <div class="pre_order mt20 center">
             <div class="tips fl ml20">
                 <ul>
-                    <li><a th:href="@{/index}">继续购物</a></li>
+                    <li><a th:href="@{/index}">Continue Shopping</a></li>
                     <li>|</li>
-                    <li>共<span th:text="${itemsTotal}">13</span>件商品</li>
+                    <li>Total <span th:text="${itemsTotal}">13</span> item(s)</li>
                     <div class="clear"></div>
                 </ul>
             </div>
             <div class="order_div fr">
-                <div class="order_total fl">合计（不含运费）：<span th:text="${priceTotal}+'.00元'">1299.00元</span></div>
+                <div class="order_total fl">Total (excluding shipping): <span th:text="${priceTotal}+'.00¥'">1299.00¥</span></div>
                 <div class="order_button fr">
                     <th:block th:if="${itemsTotal == 0}">
                         <input class="order_button_c" type="button" name="tip"
                                onclick="tip()"
-                               value="去结算"/>
+                               value="Checkout"/>
                     </th:block>
                     <th:block th:unless="${itemsTotal == 0}">
                         <input class="order_button_d" type="button" name="settle"
                                onclick="settle()"
-                               value="去结算"/>
+                               value="Checkout"/>
                     </th:block>
                 </div>
                 <div class="clear"></div>
@@ -102,39 +102,39 @@
 <script type="text/javascript">
 
     /**
-     * 购物车中数量为0时提示
+     * Prompt when cart is empty
      */
     function tip() {
         Swal.fire({
-            text: "购物车中无数据，无法结算",
-            icon: "error",iconColor:"#f05b72",
+            text: "Your cart is empty. Unable to proceed to checkout.",
+            icon: "error", iconColor:"#f05b72",
         });
     }
 
     /**
-     * 跳转至结算页面
+     * Navigate to checkout page
      */
     function settle() {
         window.location.href = '/shop-cart/settle'
     }
 
     /**
-     *更新购物项
+     * Update cart item
      */
     function updateItem(id) {
         var domId = 'goodsCount' + id;
         var goodsCount = $("#" + domId).val();
         if (goodsCount > 5) {
             Swal.fire({
-                text: "单个商品最多可购买5个",
-                icon: "error",iconColor:"#f05b72",
+                text: "You can purchase up to 5 units of a single product.",
+                icon: "error", iconColor:"#f05b72",
             });
             return;
         }
         if (goodsCount < 1) {
             Swal.fire({
-                text: "数量异常",
-                icon: "error",iconColor:"#f05b72",
+                text: "Invalid quantity.",
+                icon: "error", iconColor:"#f05b72",
             });
             return;
         }
@@ -152,58 +152,55 @@
                     window.location.reload();
                 } else {
                     Swal.fire({
-                        text: "操作失败",
-                        icon: "error",iconColor:"#f05b72",
+                        text: "Operation failed.",
+                        icon: "error", iconColor:"#f05b72",
                     });
                 }
             },
             error: function () {
                 Swal.fire({
-                    text: "操作失败",
-                    icon: "error",iconColor:"#f05b72",
+                    text: "Operation failed.",
+                    icon: "error", iconColor:"#f05b72",
                 });
             }
         });
     }
 
     /**
-     * * 删除购物项
-     * @param id
+     * Delete cart item
      */
     function deleteItem(id) {
         Swal.fire({
-            title: "确认弹框",
-            text: "确认要删除数据吗?",
-            icon: "warning",iconColor:"#dea32c",
+            title: "Confirmation",
+            text: "Are you sure you want to delete this item?",
+            icon: "warning", iconColor:"#dea32c",
             showCancelButton: true,
-            confirmButtonText: '确认',
-            cancelButtonText: '取消'
+            confirmButtonText: 'Confirm',
+            cancelButtonText: 'Cancel'
         }).then((flag) => {
-                if (flag.value) {
-                    $.ajax({
-                        type: 'DELETE',
-                        url: '/shop-cart/' + id,
-                        success: function (result) {
-                            if (result.resultCode == 200) {
-                                window.location.reload();
-                            } else {
-                                Swal.fire({
-                                    text: "操作失败",
-                                    icon: "error",iconColor:"#f05b72",
-                                });
-                            }
-                        },
-                        error: function () {
+            if (flag.value) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/shop-cart/' + id,
+                    success: function (result) {
+                        if (result.resultCode == 200) {
+                            window.location.reload();
+                        } else {
                             Swal.fire({
-                                text: "操作失败",
-                                icon: "error",iconColor:"#f05b72",
+                                text: "Operation failed.",
+                                icon: "error", iconColor:"#f05b72",
                             });
                         }
-                    });
-                }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            text: "Operation failed.",
+                            icon: "error", iconColor:"#f05b72",
+                        });
+                    }
+                });
             }
-        )
-        ;
+        });
     }
 </script>
 </html>

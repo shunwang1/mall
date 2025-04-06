@@ -1,7 +1,6 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="mall/header::head-fragment('NewBee商城-订单列表','my-orders')">
+<head th:replace="mall/header::head-fragment('NewBee Mall - Order List','my-orders')">
 </head>
 <body>
 <header th:replace="mall/header::header-fragment"></header>
@@ -19,8 +18,8 @@
             <div class="uc-box uc-main-box">
                 <div class="uc-content-box order-list-box">
                     <div class="box-hd">
-                        <h1 class="title">我的订单
-                            <small>请谨防钓鱼链接或诈骗电话，<a href="##">了解更多&gt;</a>
+                        <h1 class="title">My Orders
+                            <small>Be cautious of phishing links or scam calls, <a href="##">Learn more&gt;</a>
                             </small>
                         </h1>
                     </div>
@@ -30,7 +29,7 @@
                                 <th:block th:if="${#lists.isEmpty(orderPageResult.list)}">
                                     <img style="margin-top: 16px;"
                                          th:src="@{/mall/image/null-content.png}">
-                                    <small><a th:href="@{/index}">&nbsp;&nbsp;&nbsp;&nbsp;去购物&gt;</a>
+                                    <small><a th:href="@{/index}">&nbsp;&nbsp;&nbsp;&nbsp;Go shopping&gt;</a>
                                     </small>
                                 </th:block>
                                 <th:block th:unless="${#lists.isEmpty(orderPageResult.list)}">
@@ -55,13 +54,13 @@
                                                 <thead>
                                                 <tr>
                                                     <th class="col-main"><p class="caption-info">
-                                                        下单时间：<th:block th:text="${#dates.format(order.createTime, 'yyyy-MM-dd HH:mm:ss')}">02月07日</th:block>
-                                                        <span class="sep">|</span>订单号：<a
+                                                        Order Time: <th:block th:text="${#dates.format(order.createTime, 'yyyy-MM-dd HH:mm:ss')}">Feb 07</th:block>
+                                                        <span class="sep">|</span> Order Number: <a
                                                             th:href="@{${'/orders/'+order.orderNo}}"
                                                             th:text="${order.orderNo}">201908121807</a></p></th>
-                                                    <th class="col-sub"><p class="caption-price">应付金额：<span
+                                                    <th class="col-sub"><p class="caption-price">Amount Due: <span
                                                             class="num"
-                                                            th:text="${order.totalPrice+'.00'}">1299.00</span>元
+                                                            th:text="${order.totalPrice+'.00'}">1299.00</span> RMB
                                                     </p></th>
                                                 </tr>
                                                 </thead>
@@ -84,13 +83,13 @@
                                                                                        th:text="${item.goodsName}">newbee</a>
                                                                     </p>
                                                                     <p class="price"
-                                                                       th:text="${item.sellingPrice+'元 x '+item.goodsCount}">
-                                                                        13元 × 1</p></li>
+                                                                       th:text="${item.sellingPrice+'RMB × '+item.goodsCount}">
+                                                                        13 RMB × 1</p></li>
                                                             </th:block>
                                                         </ul>
                                                     </td>
                                                     <td class="order-actions"><a class="btn btn-small btn-line-gray"
-                                                                                 th:href="@{${'/orders/'+order.orderNo}}">订单详情</a>
+                                                                                 th:href="@{${'/orders/'+order.orderNo}}">Order Details</a>
                                                     </td>
                                                 </tr>
                                                 </tbody>

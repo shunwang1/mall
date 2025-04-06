@@ -1,9 +1,8 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>NewBee商城-登录</title>
+    <title>NewBee mall</title>
     <link rel="stylesheet" th:href="@{mall/css/common.css}">
     <link rel="stylesheet" th:href="@{mall/styles/login.css}">
     <link rel="stylesheet" th:href="@{mall/styles/header.css}">
@@ -19,32 +18,32 @@
     <div class="login">
         <div class="login_center">
             <div class="login_top">
-                <div class="left fl">会员登录</div>
-                <div class="right fr">您还不是我们的会员？<a href="register.html" target="_self">立即注册</a></div>
+                <div class="left fl">membership login</div>
+                <div class="right fr">Not member<a href="register.html" target="_self">register now!</a></div>
                 <div class="clear"></div>
                 <div class="under-line center"></div>
             </div>
             <form id="loginForm" onsubmit="return false;" action="##">
                 <div class="login_main center">
-                    <div class="login-info">手机号:&nbsp;<input class="login-info-input" type="text" name="loginName"
+                    <div class="login-info">phone number:&nbsp;<input class="login-info-input" type="text" name="loginName"
                                                              id="loginName"
-                                                             placeholder="请输入你的手机号"/>
+                                                             placeholder="enter you phone number"/>
                     </div>
-                    <div class="login-info">密&nbsp;&nbsp;&nbsp;&nbsp;码:&nbsp;<input class="login-info-input"
+                    <div class="login-info">password&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input class="login-info-input"
                                                                                     id="password"
                                                                                     type="password"
                                                                                     name="password"
-                                                                                    placeholder="请输入你的密码"/></div>
+                                                                                    placeholder="enter your password"/></div>
                     <div class="login-info">
-                        验证码:&nbsp;
+                        check code:&nbsp;
                         <input class="login-info-input verify-code" type="text" name="verifyCode"
-                               placeholder="请输入验证码" id="verifyCode"/>
-                        <img alt="单击图片刷新！" style="top: 16px;position: relative;" th:src="@{/common/mall/kaptcha}"
+                               placeholder="please enter your check code" id="verifyCode"/>
+                        <img alt="refreshing the code！" style="top: 16px;position: relative;" th:src="@{/common/mall/kaptcha}"
                              onclick="this.src='/common/mall/kaptcha?d='+new Date()*1">
                     </div>
                 </div>
                 <div class="login_submit">
-                    <input class="submit" type="submit" onclick="login()" value="立即登录">
+                    <input class="submit" type="submit" onclick="login()" value="login now">
                 </div>
             </form>
         </div>
@@ -60,7 +59,7 @@
         var loginName = $("#loginName").val();
         if (!validPhoneNumber(loginName)) {
             Swal.fire({
-                text: "请输入正确的登录名(即手机号)",
+                text: "please enter the correct phone number",
                 icon: "error",iconColor:"#f05b72",
             });
             return false;
@@ -68,7 +67,7 @@
         var password = $("#password").val();
         if (!validPassword(password)) {
             Swal.fire({
-                text:"请输入正确的密码格式(6-20位字符和数字组合)",
+                text:"Please enter the correct password format (6-20 characters and numbers)",
                 icon: "error",iconColor:"#f05b72",
             });
             return false;
@@ -76,16 +75,16 @@
         var verifyCode = $("#verifyCode").val();
         if (!validLength(verifyCode, 5)) {
             Swal.fire({
-                text: "请输入正确的验证码",
+                text: "please enter the correct check code",
                 icon: "error",iconColor:"#f05b72",
             });
             return false;
         }
-        //验证
+        //verify
         var params = $("#loginForm").serialize();
         var url = '/login';
         $.ajax({
-            type: 'POST',//方法类型
+            type: 'POST',//functional class
             url: url,
             data: params,
             success: function (result) {
@@ -101,7 +100,7 @@
             },
             error: function () {
                 Swal.fire({
-                    text: "操作失败",
+                    text: "fail to operate",
                     icon: "error",iconColor:"#f05b72",
                 });
             }
