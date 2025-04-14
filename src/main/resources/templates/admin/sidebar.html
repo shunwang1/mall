@@ -1,4 +1,3 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <aside th:fragment="sidebar-fragment(path)" class="main-sidebar sidebar-dark-primary elevation-4">
@@ -7,7 +6,7 @@
         <img th:src="@{/admin/dist/img/new-bee-logo-1.png}" alt="ssm-cluster Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">NEWBEE商城</span>
+        <span class="brand-text font-weight-light">NEWBEE Mall</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -30,17 +29,17 @@
                     <a th:href="@{/admin/goods/edit}" th:class="${path}=='goods-edit'?'nav-link active':'nav-link'">
                         <i class="nav-icon fa fa-plus"></i>
                         <p>
-                            商品信息
+                            Product Information
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">首页配置</li>
+                <li class="nav-header">Homepage Configuration</li>
                 <li class="nav-item">
                     <a th:href="@{/admin/carousels}"
                        th:class="${path}=='newbee_mall_carousel'?'nav-link active':'nav-link'">
                         <i class="nav-icon fa fa-file-image-o"></i>
                         <p>
-                            轮播图配置
+                            Carousel Configuration
                         </p>
                     </a>
                 </li>
@@ -49,7 +48,7 @@
                        th:class="${path}=='INDEX_GOODS_HOTS'?'nav-link active':'nav-link'">
                         <i class="nav-icon fa fa-hand-o-up"></i>
                         <p>
-                            热销商品配置
+                            Hot Products Configuration
                         </p>
                     </a>
                 </li>
@@ -58,7 +57,7 @@
                        th:class="${path}=='INDEX_GOODS_NEW'?'nav-link active':'nav-link'">
                         <i class="nav-icon fa fa-hand-o-up"></i>
                         <p>
-                            新品上线配置
+                            New Arrivals Configuration
                         </p>
                     </a>
                 </li>
@@ -67,17 +66,17 @@
                        th:class="${path}=='INDEX_GOODS_RECOMMOND'?'nav-link active':'nav-link'">
                         <i class="nav-icon fa fa-hand-o-up"></i>
                         <p>
-                            为你推荐配置
+                            Recommended for You Configuration
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">管理模块</li>
+                <li class="nav-header">Management Module</li>
                 <li class="nav-item">
                     <a th:href="@{/admin/categories?parentId=0&categoryLevel=1&backParentId=0}"
                        th:class="${path}=='newbee_mall_category'?'nav-link active':'nav-link'">
                         <i class="fa fa-list-alt nav-icon" aria-hidden="true"></i>
                         <p>
-                            分类管理
+                            Category Management
                         </p>
                     </a>
                 </li>
@@ -85,7 +84,7 @@
                     <a th:href="@{/admin/goods}" th:class="${path}=='newbee_mall_goods'?'nav-link active':'nav-link'">
                         <i class="fa fa-archive nav-icon" aria-hidden="true"></i>
                         <p>
-                            商品管理
+                            Product Management
                         </p>
                     </a>
                 </li>
@@ -93,7 +92,7 @@
                     <a th:href="@{/admin/users}" th:class="${path}=='users'?'nav-link active':'nav-link'">
                         <i class="fa fa-users nav-icon" aria-hidden="true"></i>
                         <p>
-                            会员管理
+                            Member Management
                         </p>
                     </a>
                 </li>
@@ -101,22 +100,22 @@
                     <a th:href="@{/admin/orders}" th:class="${path}=='orders'?'nav-link active':'nav-link'">
                         <i class="fa fa-money nav-icon" aria-hidden="true"></i>
                         <p>
-                            订单管理
+                            Order Management
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">系统管理</li>
+                <li class="nav-header">System Settings</li>
                 <li class="nav-item">
                     <a th:href="@{/admin/profile}"
                        th:class="${path}=='profile'?'nav-link active':'nav-link'">
                         <i class="fa fa-user-secret nav-icon"></i>
-                        <p>修改密码</p>
+                        <p>Change Password</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/admin/logout}" class="nav-link">
                         <i class="fa fa-sign-out nav-icon"></i>
-                        <p>安全退出</p>
+                        <p>Log Out Safely</p>
                     </a>
                 </li>
                 </li>
